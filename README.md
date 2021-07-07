@@ -1,14 +1,8 @@
-# Pin
+# Messages
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.
 
-## MongoDB server
-
-The MongoDB database is runing in an docker container. use the included docker-compose.yml file to deploy the mongoDB server using docker-compose or docker-swarm
-
-## Express server
-
-To start nodejs express server run `npm run server` in a separate terminal
+This demo project use the Crudcrud.com api service to temporally store data
 
 ## Development server
 

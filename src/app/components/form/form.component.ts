@@ -46,32 +46,36 @@ export class FormComponent implements OnInit {
 	}
 
 	public savePin() {
-		const model: Ticket = {
-			...this.formGroup.value,
-		};
+		if (localStorage.getItem("author_id")) {
+			const model: Ticket = {
+				...this.formGroup.value,
+			};
+			console.log(localStorage.getItem("author"));
+			model.author = localStorage.getItem("author");
 
-		if (this.id == null) {
-			this.repository.saveTicket(model).subscribe((response) => {
-				this.snackBar
-					.open("Your pin is saved, Redirecting ...", "Cool!", {
-						duration: 2000,
-					})
-					.afterDismissed()
-					.subscribe(() => {
-						this.navigate.goToPins();
-					});
-			});
-		} else {
-			this.repository.updateTicket(this.id, model).subscribe((response) => {
-				this.snackBar
-					.open("Your pin is updated, Redirecting ...", "Cool!", {
-						duration: 2000,
-					})
-					.afterDismissed()
-					.subscribe(() => {
-						this.navigate.goToPins();
-					});
-			});
+			if (this.id == null) {
+				this.repository.saveTicket(model).subscribe((response) => {
+					this.snackBar
+						.open("Your pin is saved, Redirecting ...", "Cool!", {
+							duration: 2000,
+						})
+						.afterDismissed()
+						.subscribe(() => {
+							this.navigate.goToPins();
+						});
+				});
+			} else {
+				this.repository.updateTicket(this.id, model).subscribe((response) => {
+					this.snackBar
+						.open("Your pin is updated, Redirecting ...", "Cool!", {
+							duration: 2000,
+						})
+						.afterDismissed()
+						.subscribe(() => {
+							this.navigate.goToPins();
+						});
+				});
+			}
 		}
 	}
 }

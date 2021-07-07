@@ -12,7 +12,7 @@ import { User } from "../../core/interfaces/user";
 })
 export class LoginComponent implements OnInit {
 	isLinear = false;
-	loginformGroup: FormGroup;
+	formGroup: FormGroup;
 
 	constructor(
 		private _FormBuilder: FormBuilder,
@@ -22,14 +22,14 @@ export class LoginComponent implements OnInit {
 	) {}
 
 	ngOnInit() {
-		this.loginformGroup = this._FormBuilder.group({
+		this.formGroup = this._FormBuilder.group({
 			author: ["", Validators.required],
 		});
 	}
 
 	public savePin() {
 		const model: User = {
-			...this.loginformGroup.value,
+			...this.formGroup.value,
 		};
 
 		this.repository.saveUser(model).subscribe((response) => {
@@ -39,6 +39,8 @@ export class LoginComponent implements OnInit {
 				})
 				.afterDismissed()
 				.subscribe(() => {
+					localStorage.setItem("author", response.author);
+					localStorage.setItem("author_id", response._id);
 					this.navigate.goToPins();
 				});
 		});

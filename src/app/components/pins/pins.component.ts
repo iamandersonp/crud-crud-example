@@ -17,7 +17,13 @@ export class PinsComponent {
 	public pins = [];
 	public selectedPin: Ticket;
 	private currentSubscription: Subscription;
-	displayedColumns: string[] = ["id", "title", "description"];
+	displayedColumns: string[] = [
+		"id",
+		"author",
+		"message",
+		"answer",
+		"answeredBy",
+	];
 	dataSource: Ticket[] = [];
 
 	constructor(

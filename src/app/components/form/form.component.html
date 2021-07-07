@@ -1,13 +1,17 @@
 <mat-card class="form">
 	<form [formGroup]="formGroup">
-		<mat-form-field>
-			<input matInput placeholder="Title" formControlName="title" required />
+		<mat-form-field class="extra">
+			<textarea
+				matInput
+				placeholder="Message"
+				formControlName="message"
+			></textarea>
 		</mat-form-field>
 		<mat-form-field class="extra">
 			<textarea
 				matInput
-				placeholder="Description"
-				formControlName="description"
+				placeholder="Answer"
+				formControlName="answer"
 			></textarea>
 		</mat-form-field>
 		<button mat-stroked-button color="primary" (click)="savePin()">

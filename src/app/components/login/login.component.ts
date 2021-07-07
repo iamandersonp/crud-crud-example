@@ -3,9 +3,7 @@ import { FormBuilder, FormGroup, Validators, FormArray } from "@angular/forms";
 import { UserRepositoryService } from "src/app/core/services/user-repository.service";
 import { NavigationService } from "src/app/core/services/navigation.service";
 import { MatSnackBar } from "@angular/material/snack-bar";
-import { Router, ActivatedRoute } from "@angular/router";
 import { User } from "../../core/interfaces/user";
-
 @Component({
 	selector: "app-login",
 	templateUrl: "./login.component.html",
@@ -14,25 +12,24 @@ import { User } from "../../core/interfaces/user";
 })
 export class LoginComponent implements OnInit {
 	isLinear = false;
-	formGroup: FormGroup;
+	loginformGroup: FormGroup;
 
 	constructor(
-		private _formBuilder: FormBuilder,
+		private _FormBuilder: FormBuilder,
 		private repository: UserRepositoryService,
 		private navigate: NavigationService,
-		private snackBar: MatSnackBar,
-		public route: ActivatedRoute
+		private snackBar: MatSnackBar
 	) {}
 
 	ngOnInit() {
-		this.formGroup = this._formBuilder.group({
+		this.loginformGroup = this._FormBuilder.group({
 			author: ["", Validators.required],
 		});
 	}
 
 	public savePin() {
 		const model: User = {
-			...this.formGroup.value,
+			...this.loginformGroup.value,
 		};
 
 		this.repository.saveUser(model).subscribe((response) => {

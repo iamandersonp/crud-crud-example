@@ -20,7 +20,7 @@ export class TicketRepositoryService {
 		return this.api.post(this.endpoint, body);
 	}
 
-	public updatePin(id, body) {
+	public updateTicket(id, body) {
 		return this.api.put(this.endpoint + id, body);
 	}
 }

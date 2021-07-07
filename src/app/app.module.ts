@@ -14,10 +14,10 @@ import { LayoutComponent } from "./components/layout/layout.component";
 import { MenuComponent } from "./components/menu/menu.component";
 import { ActionsComponent } from "./components/actions/actions.component";
 import { FormComponent } from "./components/form/form.component";
+import { LoginComponent } from "./components/login/login.component";
 import { ApiService } from "./core/services/api.service";
 import { TicketRepositoryService } from "./core/services/ticket-repository.service";
 import { NavigationService } from "./core/services/navigation.service";
-import { PinsService } from "./components/pins/pins.service";
 
 @NgModule({
 	declarations: [
@@ -27,6 +27,7 @@ import { PinsService } from "./components/pins/pins.service";
 		MenuComponent,
 		ActionsComponent,
 		FormComponent,
+		LoginComponent,
 	],
 	imports: [
 		BrowserModule,
@@ -39,12 +40,7 @@ import { PinsService } from "./components/pins/pins.service";
 		AngularMaterialModule,
 	],
 	entryComponents: [ActionsComponent],
-	providers: [
-		ApiService,
-		TicketRepositoryService,
-		NavigationService,
-		PinsService,
-	],
+	providers: [ApiService, TicketRepositoryService, NavigationService],
 	bootstrap: [AppComponent],
 })
 export class AppModule {}

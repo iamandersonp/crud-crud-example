@@ -8,15 +8,27 @@
 		</ng-container>
 
 		<!-- Name Column -->
-		<ng-container matColumnDef="title">
-			<th mat-header-cell *matHeaderCellDef>Name</th>
+		<ng-container matColumnDef="author">
+			<th mat-header-cell *matHeaderCellDef>Author</th>
 			<td mat-cell *matCellDef="let element">{{ element.author }}</td>
 		</ng-container>
 
 		<!-- Weight Column -->
-		<ng-container matColumnDef="description">
-			<th mat-header-cell *matHeaderCellDef>description</th>
+		<ng-container matColumnDef="message">
+			<th mat-header-cell *matHeaderCellDef>Message</th>
 			<td mat-cell *matCellDef="let element">{{ element.message }}</td>
+		</ng-container>
+
+		<!-- Weight Column -->
+		<ng-container matColumnDef="answer">
+			<th mat-header-cell *matHeaderCellDef>Answer</th>
+			<td mat-cell *matCellDef="let element">{{ element.answer }}</td>
+		</ng-container>
+
+		<!-- Weight Column -->
+		<ng-container matColumnDef="answeredBy">
+			<th mat-header-cell *matHeaderCellDef>Answered By</th>
+			<td mat-cell *matCellDef="let element">{{ element.answeredBy }}</td>
 		</ng-container>
 
 		<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

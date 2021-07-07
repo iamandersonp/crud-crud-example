@@ -1,15 +1,10 @@
 <mat-card class="form">
-	<form [formGroup]="formGroup">
+	<form [loginformGroupc]="loginformGroup">
 		<mat-form-field>
-			<input
-				matInput
-				placeholder="username"
-				formControlName="author"
-				required
-			/>
+			<input matInput placeholder="author" formControlName="author" required />
 		</mat-form-field>
 		<button mat-stroked-button color="primary" (click)="savePin()">
-			Login!
+			Save it!
 		</button>
 	</form>
 </mat-card>

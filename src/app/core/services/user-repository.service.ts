@@ -5,11 +5,11 @@ import { ApiService } from "./api.service";
 	providedIn: "root",
 })
 export class UserRepositoryService {
-	endpoint = "/users/";
+	endpoint = "/users";
 	constructor(private api: ApiService) {}
 
 	public getUser(id: string) {
-		return this.api.get(this.endpoint + id);
+		return this.api.get(this.endpoint + "/" + id);
 	}
 
 	public saveUser(body) {

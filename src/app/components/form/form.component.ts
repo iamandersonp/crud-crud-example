@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { FormBuilder, FormGroup, Validators, FormArray } from "@angular/forms";
-import { RepositoryService } from "src/app/core/services/repository.service";
+import { TicketRepositoryService } from "src/app/core/services/ticket-repository.service";
 import { NavigationService } from "src/app/core/services/navigation.service";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { Router, ActivatedRoute } from "@angular/router";
@@ -18,7 +18,7 @@ export class FormComponent implements OnInit {
 
 	constructor(
 		private _formBuilder: FormBuilder,
-		private repository: RepositoryService,
+		private repository: TicketRepositoryService,
 		private navigate: NavigationService,
 		private snackBar: MatSnackBar,
 		public route: ActivatedRoute
@@ -31,15 +31,15 @@ export class FormComponent implements OnInit {
 		});
 
 		this.formGroup = this._formBuilder.group({
-			title: ["", Validators.required],
-			description: [""],
+			message: ["", Validators.required],
+			answer: "",
 		});
 
 		if (this.id != null) {
-			this.repository.getPin(this.id).subscribe((response) => {
+			this.repository.getTicket(this.id).subscribe((response) => {
 				this.formGroup.patchValue({
-					title: response.title,
-					description: response.description,
+					message: response.message,
+					answer: response.answer,
 				});
 			});
 		}
@@ -51,7 +51,7 @@ export class FormComponent implements OnInit {
 		};
 
 		if (this.id == null) {
-			this.repository.savePins(model).subscribe((response) => {
+			this.repository.saveTicket(model).subscribe((response) => {
 				this.snackBar
 					.open("Your pin is saved, Redirecting ...", "Cool!", {
 						duration: 2000,
@@ -62,7 +62,7 @@ export class FormComponent implements OnInit {
 					});
 			});
 		} else {
-			this.repository.updatePin(this.id, model).subscribe((response) => {
+			this.repository.updateTicket(this.id, model).subscribe((response) => {
 				this.snackBar
 					.open("Your pin is updated, Redirecting ...", "Cool!", {
 						duration: 2000,
